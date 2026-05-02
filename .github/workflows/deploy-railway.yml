@@ -1,0 +1,30 @@
+- name: Deploy to Railway
+  run: |
+    npm i -g @railway/cli
+
+    railway login --token $RAILWAY_TOKEN
+
+    railway link $RAILWAY_PROJECT_ID
+
+    railway variables set \
+      API_HASH=$API_HASH \
+      API_ID=$API_ID \
+      BOT_TOKEN=$BOT_TOKEN \
+      LOG_CHANNEL=$LOG_CHANNEL \
+      MULTI_TOKEN1=$MULTI_TOKEN1 \
+      MULTI_TOKEN2=$MULTI_TOKEN2 \
+      MULTI_TOKEN3=$MULTI_TOKEN3 \
+      MULTI_TOKEN4=$MULTI_TOKEN4
+
+    railway up
+  env:
+    RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+    API_HASH: ${{ secrets.API_HASH }}
+    API_ID: ${{ secrets.API_ID }}
+    BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+    LOG_CHANNEL: ${{ secrets.LOG_CHANNEL }}
+    MULTI_TOKEN1: ${{ secrets.MULTI_TOKEN1 }}
+    MULTI_TOKEN2: ${{ secrets.MULTI_TOKEN2 }}
+    MULTI_TOKEN3: ${{ secrets.MULTI_TOKEN3 }}
+    MULTI_TOKEN4: ${{ secrets.MULTI_TOKEN4 }}
